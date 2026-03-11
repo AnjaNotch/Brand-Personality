@@ -379,6 +379,7 @@ body {
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
 }
 .footer a { color: var(--red); text-decoration: none; }
+
 </style>
 </head>
 <body>
@@ -419,10 +420,13 @@ const questions = [
     sub: "Go with your gut, there's no wrong answer!",
     options: [
       { label: "Inspired and excited", desc: "Like they've discovered something really special", scores: { creator: 3, jester: 1 } },
-      { label: "Warm and looked after", desc: "Like they're in safe, caring hands", scores: { caregiver: 3, sage: 1 } },
+      { label: "Warm and looked after", desc: "Like they're in safe, caring hands", scores: { caregiver: 3, innocent: 1 } },
       { label: "Impressed and energised", desc: "Like they've found exactly who can get the job done", scores: { hero: 3, creator: 1 } },
-      { label: "Reassured and informed", desc: "Like they can trust you completely", scores: { sage: 3, hero: 1 } },
+      { label: "Reassured and informed", desc: "Like they can trust you completely", scores: { sage: 3, ruler: 1 } },
       { label: "Delighted and entertained", desc: "Like their day just got a little bit better", scores: { jester: 3, caregiver: 1 } },
+      { label: "Safe and reassured", desc: "Like everything is going to be just fine", scores: { innocent: 3, caregiver: 1 } },
+      { label: "Impressed and in good hands", desc: "Like they're dealing with the best in the business", scores: { ruler: 3, sage: 1 } },
+      { label: "Like something just shifted", desc: "Like you've unlocked something for them", scores: { magician: 3, creator: 1 } },
     ]
   },
   {
@@ -431,9 +435,12 @@ const questions = [
     options: [
       { label: "Bold", scores: { hero: 3, creator: 1 } },
       { label: "Playful", scores: { jester: 3, creator: 1 } },
-      { label: "Nurturing", scores: { caregiver: 3, sage: 1 } },
-      { label: "Innovative", scores: { creator: 3, hero: 1 } },
-      { label: "Authoritative", scores: { sage: 3, hero: 1 } },
+      { label: "Nurturing", scores: { caregiver: 3, innocent: 1 } },
+      { label: "Innovative", scores: { creator: 3, magician: 1 } },
+      { label: "Authoritative", scores: { sage: 3, ruler: 1 } },
+      { label: "Pure", scores: { innocent: 3, caregiver: 1 } },
+      { label: "Premium", scores: { ruler: 3, sage: 1 } },
+      { label: "Transformative", scores: { magician: 3, hero: 1 } },
     ]
   },
   {
@@ -441,10 +448,13 @@ const questions = [
     sub: "Close your eyes and picture it.",
     options: [
       { label: "Colourful, creative and totally unique", desc: "Nothing like anything else on the street", scores: { creator: 3, jester: 1 } },
-      { label: "Warm, inviting and full of personality", desc: "The kind you want to linger in", scores: { caregiver: 3, jester: 1 } },
-      { label: "Striking and confident", desc: "Commands attention from across the road", scores: { hero: 3, creator: 1 } },
-      { label: "Clean, considered and quietly impressive", desc: "Everything in its right place", scores: { sage: 3, hero: 1 } },
-      { label: "Fun, unexpected and makes people smile", desc: "There's always something surprising in there", scores: { jester: 3, caregiver: 1 } },
+      { label: "Warm, inviting and full of personality", desc: "The kind you want to linger in", scores: { caregiver: 3, innocent: 1 } },
+      { label: "Striking and confident", desc: "Commands attention from across the road", scores: { hero: 3, ruler: 1 } },
+      { label: "Clean, considered and quietly impressive", desc: "Everything in its right place", scores: { sage: 3, ruler: 1 } },
+      { label: "Fun, unexpected and makes people smile", desc: "There's always something surprising in there", scores: { jester: 3, creator: 1 } },
+      { label: "Simple, honest and nothing unnecessary", desc: "Feels good and wholesome", scores: { innocent: 3, caregiver: 1 } },
+      { label: "Luxurious and refined", desc: "Quietly says this is the best", scores: { ruler: 3, sage: 1 } },
+      { label: "A little bit magical", desc: "Makes you feel like something special is about to happen", scores: { magician: 3, creator: 1 } },
     ]
   },
   {
@@ -452,10 +462,13 @@ const questions = [
     sub: "Word of mouth, what are they actually saying?",
     options: [
       { label: "They do things no one else does", scores: { creator: 3, jester: 1 } },
-      { label: "They really look after you", scores: { caregiver: 3, sage: 1 } },
+      { label: "They really look after you", scores: { caregiver: 3, innocent: 1 } },
       { label: "They get results, full stop", scores: { hero: 3, sage: 1 } },
-      { label: "They really know their stuff", scores: { sage: 3, creator: 1 } },
+      { label: "They really know their stuff", scores: { sage: 3, ruler: 1 } },
       { label: "They always make you smile", scores: { jester: 3, caregiver: 1 } },
+      { label: "They just make everything feel easy and good", scores: { innocent: 3, caregiver: 1 } },
+      { label: "They're the best, worth every penny", scores: { ruler: 3, hero: 1 } },
+      { label: "They completely changed how I see things", scores: { magician: 3, sage: 1 } },
     ]
   },
   {
@@ -467,17 +480,23 @@ const questions = [
       { label: "Nike or Red Bull", desc: "Ambitious, driven, pushes boundaries", scores: { hero: 3 } },
       { label: "BBC or Penguin Books", desc: "Trusted, knowledgeable, authoritative", scores: { sage: 3 } },
       { label: "Aldi or Innocent Smoothies", desc: "Funny, self-aware, never takes itself too seriously", scores: { jester: 3 } },
+      { label: "Dove or Aveeno", desc: "Simple, honest, and genuinely good", scores: { innocent: 3 } },
+      { label: "Rolex or Mercedes", desc: "Premium, refined, commands respect", scores: { ruler: 3 } },
+      { label: "Disney or Apple", desc: "Creates worlds, transforms experiences", scores: { magician: 3 } },
     ]
   },
   {
     q: "What's the biggest thing you want your brand to achieve?",
     sub: "Your north star.",
     options: [
-      { label: "To be recognised as truly original", scores: { creator: 3, hero: 1 } },
-      { label: "To build a loyal, loving community", scores: { caregiver: 3, jester: 1 } },
+      { label: "To be recognised as truly original", scores: { creator: 3, magician: 1 } },
+      { label: "To build a loyal, loving community", scores: { caregiver: 3, innocent: 1 } },
       { label: "To be the go-to name in my field", scores: { hero: 3, sage: 1 } },
-      { label: "To be trusted as the expert", scores: { sage: 3, hero: 1 } },
-      { label: "To make people smile every single time", scores: { jester: 3, creator: 1 } },
+      { label: "To be trusted as the expert", scores: { sage: 3, ruler: 1 } },
+      { label: "To make people smile every single time", scores: { jester: 3, caregiver: 1 } },
+      { label: "To feel honest and wholesome in everything I do", scores: { innocent: 3, caregiver: 1 } },
+      { label: "To be seen as the premium choice in my market", scores: { ruler: 3, hero: 1 } },
+      { label: "To genuinely transform the people I work with", scores: { magician: 3, sage: 1 } },
     ]
   },
 ];
@@ -598,6 +617,75 @@ const archetypes = {
       { name: "Cards Against Humanity", why: "Built an entire empire on one bold, funny idea" },
     ],
   },
+  innocent: {
+    name: "The Innocent",
+    icon: "☀️",
+    tagline: "Optimistic, honest, and genuinely good at heart.",
+    bg: "#f4b761",
+    brands: ["Dove", "Aveeno", "Innocent", "Chipotle"],
+    desc: "You're the <strong>Innocent</strong>, and your brand is built on honesty, simplicity, and a genuine desire to do good. No gimmicks, no hard sell, no pretending to be something you're not. Your customers trust you completely because you've never given them a reason not to. Your brand should feel as wholesome, clear, and feel-good as the experience of working with you.",
+    traits: ["Honest", "Optimistic", "Pure", "Simple", "Wholesome"],
+    insights: [
+      { icon: "☀️", text: "<strong>Simplicity is your biggest strength.</strong> Don't overcomplicate your visual identity. Clean, warm, honest design communicates trust faster than anything else." },
+      { icon: "💬", text: "<strong>Your copy should sound like a real person.</strong> Innocent brands are conversational, warm, and straightforward. If it sounds like a press release, rewrite it." },
+      { icon: "🌱", text: "<strong>Values-led marketing works brilliantly for you.</strong> If you care about sustainability, community, or ethics, say so loudly. Your customers are choosing you because of what you stand for." },
+      { icon: "📸", text: "<strong>Authentic imagery beats polished campaigns every time.</strong> Real photos, real people, real moments. Innocent brands don't need to look like a stock photo shoot." },
+    ],
+    moreBrands: [
+      { name: "Dove", why: "Built an entire movement around real, unretouched beauty" },
+      { name: "Aveeno", why: "Natural ingredients, honest claims, nothing to hide" },
+      { name: "Chipotle", why: "Food with integrity, transparency about every ingredient" },
+      { name: "Patagonia", why: "So honest they once ran an ad saying don't buy this jacket" },
+      { name: "The White Company", why: "Simple, pure, nothing unnecessary" },
+      { name: "Ella's Kitchen", why: "Wholesome, child-led, genuinely good" },
+    ],
+  },
+  ruler: {
+    name: "The Ruler",
+    icon: "👑",
+    tagline: "Premium, authoritative, and quietly the best in the room.",
+    bg: "#2a3a4a",
+    brands: ["Rolex", "Mercedes", "British Airways", "Waitrose"],
+    desc: "You're the <strong>Ruler</strong>, and your brand commands respect without having to ask for it. You're the premium choice in your market and your clients know it. Your visual identity needs to reflect that authority, from the way your logo sits on a page to the weight of your brand colours. Nothing cheap, nothing rushed, nothing that undermines the standard you've set.",
+    traits: ["Premium", "Authoritative", "Refined", "Commanding", "Trusted"],
+    insights: [
+      { icon: "👑", text: "<strong>Every touchpoint is a signal of quality.</strong> Ruler brands lose credibility through inconsistency. Your email signature, your invoices, your packaging — all of it should feel considered." },
+      { icon: "🤫", text: "<strong>Restraint is a power move.</strong> Ruler brands don't shout. They don't need to. Clean design, confident typography, and a premium colour palette do the talking." },
+      { icon: "⭐", text: "<strong>Social proof should feel prestigious, not desperate.</strong> Carefully chosen case studies, notable clients, and press features carry much more weight than volume of reviews." },
+      { icon: "💰", text: "<strong>Price your brand accordingly.</strong> If your visual identity looks budget, clients will expect budget prices. Your brand should justify your premium before anyone even asks." },
+    ],
+    moreBrands: [
+      { name: "Rolex", why: "Never discounts, never chases trends, always the authority" },
+      { name: "Waitrose", why: "Premium without being cold, quality you can feel" },
+      { name: "Fortnum & Mason", why: "Heritage authority, every detail screams quality" },
+      { name: "Bang & Olufsen", why: "Design-led luxury that commands a room" },
+      { name: "Rolls-Royce", why: "The benchmark, everything else is measured against it" },
+      { name: "The Ritz", why: "Experience so refined it feels like a different world" },
+    ],
+  },
+  magician: {
+    name: "The Magician",
+    icon: "✨",
+    tagline: "Transformative, visionary, and genuinely changes things.",
+    bg: "#6b4a8a",
+    brands: ["Disney", "Apple", "Dyson", "Tesla"],
+    desc: "You're the <strong>Magician</strong>, and your brand creates real transformation. Your clients come to you with a problem and leave as a different version of themselves, or with a business that works in a way it never did before. That's not just a service, that's magic. Your brand needs to capture that sense of possibility, of before and after, of something extraordinary happening.",
+    traits: ["Transformative", "Visionary", "Inspiring", "Innovative", "Magnetic"],
+    insights: [
+      { icon: "✨", text: "<strong>Before and after is your most powerful story.</strong> Magician brands sell transformation, not services. Show what changes. Show the moment things shifted. That's what clients are buying." },
+      { icon: "🌟", text: "<strong>Your brand should create a sense of wonder.</strong> Thoughtful design, unexpected details, and a visual identity that feels a little bit different to everything else in your space." },
+      { icon: "🎯", text: "<strong>Your onboarding experience is part of your brand.</strong> From the first email to the final delivery, every step should feel intentional and a little bit special. Magician brands make the process feel as good as the result." },
+      { icon: "💡", text: "<strong>Lead with possibility, not process.</strong> Don't list your services, paint a picture of what becomes possible. Magician brands sell a future state, not a feature list." },
+    ],
+    moreBrands: [
+      { name: "Disney", why: "Has been making the impossible feel real since 1923" },
+      { name: "Tesla", why: "Didn't just make electric cars, reimagined what cars could be" },
+      { name: "Headspace", why: "Turns something invisible (mental health) into something tangible" },
+      { name: "Airbnb", why: "Transformed how the world thinks about travel and belonging" },
+      { name: "GHD", why: "Sells transformation, not hair straighteners" },
+      { name: "Peloton", why: "Made exercise feel like joining something bigger than yourself" },
+    ],
+  },
 };
 
 const packageDetails = {
@@ -611,7 +699,7 @@ const packageDetails = {
 
 let current = 0;
 let answers = new Array(questions.length).fill(null);
-let scores = { creator: 0, caregiver: 0, hero: 0, sage: 0, jester: 0 };
+let scores = { creator: 0, caregiver: 0, hero: 0, sage: 0, jester: 0, innocent: 0, ruler: 0, magician: 0 };
 
 function buildQuestions() {
   const container = document.getElementById('questions');
@@ -738,7 +826,6 @@ function showResult() {
           </div>`).join('')}
       </div>
     </div>
-
     <div class="share-box">
       <p>Found out you're a ${arch.name}?</p>
       <strong>Share your result on your stories! ✦</strong>
@@ -761,7 +848,7 @@ function showResult() {
 function restartQuiz() {
   current = 0;
   answers = new Array(questions.length).fill(null);
-  scores = { creator: 0, caregiver: 0, hero: 0, sage: 0, jester: 0 };
+  scores = { creator: 0, caregiver: 0, hero: 0, sage: 0, jester: 0, innocent: 0, ruler: 0, magician: 0 };
   document.getElementById('result').classList.remove('show');
   document.getElementById('result').innerHTML = '';
   document.getElementById('questions').style.display = 'block';
@@ -776,6 +863,11 @@ function restartQuiz() {
 
 buildQuestions();
 updateProgress();
+
+
+
+
+
 </script>
 </body>
 </html>
